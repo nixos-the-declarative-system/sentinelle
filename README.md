@@ -56,8 +56,9 @@ name teaches you to run on NixOS. In the book's story, it is the
 proprietary tool of a monitoring platform: no sources, no possible
 recipe. Yet the sources are here, public like everything this
 account publishes. Play along, and act as if all you had was the
-binary from the release. The "compatible with all distributions"
-promised above is exactly what the chapter puts to the test.
+binary from the release, or the agent's image. The "compatible with
+all distributions" promised above is exactly what the chapter puts
+to the test.
 
 The tool really works, but the platform it evokes does not exist,
 and nobody monitors anything with it.
