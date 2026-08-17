@@ -30,6 +30,24 @@ probe, `--cert-warning` sets the warning threshold for certificate
 expiry (14 days by default). The exit code follows the convention of
 monitoring probes: 0 online, 1 warning, 2 offline.
 
+## The agent (OCI image)
+
+Since version 3.0, the probe also comes as an *agent*: an OCI image
+that runs `sentinelle check` in a loop, one pass per minute, on the
+targets given to the container.
+
+```console
+$ curl -LO https://github.com/nixos-the-declarative-system/sentinelle/releases/download/agent-3.0/sentinelle-agent-3.0.tar
+$ podman load -i sentinelle-agent-3.0.tar
+$ podman run localhost/sentinelle-agent:3.0 example.org
+```
+
+(`docker` works the same way.) The targets are **bare hosts**
+(`example.org`, not a URL): the probe is HTTPS by design. The flags of
+`check` (`--timeout`, `--cert-warning`…) go after the targets. The
+image is built from [agent/Dockerfile](agent/Dockerfile): a
+`debian:stable-slim` base, the release binary, nothing else.
+
 ## About this project
 
 `sentinelle` is an extra in the book *NixOS: The Declarative
